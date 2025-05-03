@@ -1,0 +1,22 @@
+<div style="padding: 20px; font-family: sans-serif;">
+  <h3>Nhập địa chỉ của bạn</h3>
+  <input type="text" id="addressInput" placeholder="Địa chỉ của bạn" style="width: 300px; padding: 10px; font-size: 16px;">
+  <button onclick="getLocation()" style="padding: 10px 15px; margin-left: 10px;">📍 Lấy vị trí</button>
+  <p id="output" style="margin-top: 10px;"></p>
+</div>
+
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    document.getElementById("output").innerText = "Trình duyệt không hỗ trợ định vị.";
+  }
+}
+
+function showPosition(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  document.getElementById("addressInput").value = `Lat: ${lat}, Lon: ${lon}`;
+}
+</script>
